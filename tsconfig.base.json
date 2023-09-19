@@ -15,9 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@console/enums": ["libs/enums/src/index.ts"],
       "@console/interfaces": ["libs/interfaces/src/index.ts"],
       "@console/redux": ["libs/redux/src/index.ts"],
-      "@console/ui": ["libs/ui/src/index.ts"]
+      "@console/ui": ["libs/ui/src/index.ts"],
+      "@console/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
