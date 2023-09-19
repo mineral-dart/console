@@ -1,0 +1,34 @@
+{
+  "name": "@console/enums",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/enums/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/enums",
+        "main": "libs/enums/src/index.ts",
+        "tsConfig": "libs/enums/tsconfig.lib.json",
+        "assets": ["libs/enums/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/enums/**/*.ts", "libs/enums/package.json"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/libs/enums"
+      }
+    }
+  },
+  "tags": []
+}
