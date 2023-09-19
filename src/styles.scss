@@ -2,3 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 /* You can add global styles to this file, and also import other style files */
+
+
+.h5 {
+    @apply text-neutral-400;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -.001em;
+    line-height: 1.75rem;
+}
+
