@@ -38,13 +38,18 @@ module.exports = {
   content: [
     join(
       __dirname,
-      '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}'
+      '{src,pages,components,app, libs}/**/*!(*.stories|*.spec).{ts,tsx,html}'
     ),
     ...createGlobPatternsForDependencies(__dirname),
   ],
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Roboto', 'Helvetica', 'sans-serif'],
+        code: ['Hack', 'sans-serif'],
+        icons: ['FontAwesome'],
+      },
       colors: {
         brand: colorsIndigo,
         indigo: colorsIndigo,
