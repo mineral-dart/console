@@ -2,6 +2,7 @@ import {createElement, ReactNode} from "react"
 
 export * from './lib/sort-by-key'
 export * from './lib/uppercase-first-letter'
+export * from './lib/date'
 
 type ReactElementProps = {
   tag: (...props: unknown[]) => JSX.Element
