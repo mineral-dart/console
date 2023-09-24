@@ -65,6 +65,7 @@ export function Table<T>({
 		}
 	}, [data, defaultSortingKey, isSorted])
 	
+
 	return (
 		<div className={className}>
 			<div
@@ -79,17 +80,19 @@ export function Table<T>({
 					(
 						{ title, className = 'px-4 py-2', classNameTitle = 'text-neutral-400', filter: hasFilter, sort },
 						index
-					) => (
-						<div key={index} className={className}>
-							{!sort && !hasFilter &&
+						) => {
+						console.log(sort)
+						return (
+							<div key={index} className={className}>
+								{!sort && !hasFilter &&
 								<span data-testid="table-head-title" className={classNames(
 									'text-xs font-medium', classNameTitle
-								)}>
+									)}>
 									{ title }
 								</span>
 							}
-							
-							{ hasFilter && data && filter && setFilter &&
+
+								{ hasFilter && data && filter && setFilter &&
 								<TableHeadFilter
 									title={title}
 									dataHead={dataHead.filter((head) => head.title === title)[0]}
@@ -98,7 +101,7 @@ export function Table<T>({
 									filter={filter}
 								/>
 							}
-							{ sort && data &&
+								{ sort && data &&
 								<TableHeadSort
 									title={title}
 									data={data}
@@ -107,8 +110,8 @@ export function Table<T>({
 									setIsSorted={setIsSorted}
 								/>
 							}
-						</div>
-					))
+							</div>
+							)})
 				}
 
 			</div>

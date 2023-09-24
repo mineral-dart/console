@@ -1,3 +1,4 @@
+import { classNames } from '@console/utils'
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import { type VariantProps, cva } from 'class-variance-authority'
 import { type ComponentProps, type ElementRef, type ReactNode, forwardRef } from 'react'
@@ -63,7 +64,7 @@ export const Tooltip = forwardRef<ElementRef<typeof TooltipPrimitive.Content>, T
           ref={forwardedRef}
         >
           {content}
-          <TooltipPrimitive.Arrow className={tooltipArrowVariants({ color })} offset={10} width={11} height={5} />
+          <TooltipPrimitive.Arrow className={classNames(tooltipArrowVariants({ color }))} offset={10} width={11} height={5} />
         </TooltipPrimitive.Content>
       </TooltipPrimitive.Portal>
     </TooltipPrimitive.Root>

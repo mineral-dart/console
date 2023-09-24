@@ -4,7 +4,7 @@ import { MenuGroup } from './menu-group'
 import { MenuItemProps } from './menu-item'
 import { Tooltip } from '../tooltip/tooltip'
 import { classNames } from '@console/utils'
-
+import './menu.scss'
 export enum MenuDirection {
   TOP = 'top',
 	BOTTOM = 'bottom',

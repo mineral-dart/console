@@ -1,5 +1,6 @@
 import {IconAwesomeEnum, IconEnum} from "@console/enums";
 import {PlusIcon} from '@heroicons/react/24/outline'
+import { AcademicCapIcon, ChevronDownIcon, Cog6ToothIcon, EllipsisVerticalIcon, EyeIcon, WalletIcon } from '@heroicons/react/20/solid'
 
 import {GithubIcon, GithubWhiteIcon} from './icons/github'
 import DeleteIcon from './icons-status/delete'
@@ -29,7 +30,7 @@ import PostgresqlIcon from './icons/postgresql'
 import RedisIcon from './icons/redis'
 import IconFa from './icon-fa/icon-fa'
 import DragIcon from './icons/drag'
-
+import './icon.scss'
 export interface IconProps {
   name: IconEnum | IconAwesomeEnum | string
   width?: string
@@ -50,6 +51,19 @@ export function Icon (props: IconProps) {
     /* ICON HEROICONS */
     case IconAwesomeEnum.PLUS:
       return <PlusIcon {...formattedProps} />
+    case IconAwesomeEnum.ANGLE_DOWN:
+      return <ChevronDownIcon {...formattedProps} />
+    case IconAwesomeEnum.EYE:
+      return <EyeIcon {...formattedProps} />
+    case IconAwesomeEnum.WHEEL:
+      return <Cog6ToothIcon {...formattedProps} />
+    case IconAwesomeEnum.WALLET:
+      return <WalletIcon {...formattedProps} />
+    case IconAwesomeEnum.USER_CROWN:
+      return <AcademicCapIcon {...formattedProps} />
+    case IconAwesomeEnum.ELLIPSIS_V:
+      return <EllipsisVerticalIcon {...formattedProps} />
+    
 
     /* ----- */
 

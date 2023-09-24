@@ -1,7 +1,7 @@
 import {Dispatch, SetStateAction, useState} from "react";
 import { Icon } from '../icons/icon'
 import {classNames} from "@console/utils";
-
+import {IconAwesomeEnum, IconEnum} from "@console/enums";
 export interface TableHeadSortProps<T> {
 	title: string
 	data: T[]
@@ -40,10 +40,11 @@ export function TableHeadSort<T> ({ title, data, setData, currentKey, setIsSorte
 			onClick={toggleSort}
 		>
 			{ title }
-			<Icon name="icon-solid-arrow-down"
+			<Icon
+				name={IconAwesomeEnum.ANGLE_DOWN}
 				className={classNames(
-					'ml-1 text-2xs inline-block transition-transform ease-out duration-100',
-					isSort ? 'rotate-180' : ''
+					'ml-1 w-5 h-5 text-2xs inline-block transition-transform ease-out duration-100',
+					isSort ?'rotate-180' : ''
 				)}
 			/>
 		</div>
