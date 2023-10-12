@@ -7,14 +7,16 @@ import { ChevronUpIcon } from '@heroicons/react/20/solid'
 import { Disclosure } from '@headlessui/react'
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, updateSettingsNavigationState } from "@console/redux";
+import Default from "./default";
 
 interface Props {
     children: ReactNode
 }
 export default function SettingsLayout ({ children }: Props) {
 	return (
-		<div className="flex min-h-screen">
-			<div className="w-72 border-r min-h-screen p-9">
+		<Default>
+			<div className="flex min-h-screen">
+				<div className="w-72 border-r min-h-screen p-9">
 					<div>
 						<span className="px-3 text-[11px] text-gray-700 uppercase">Organisation</span>
 					</div>
@@ -22,12 +24,14 @@ export default function SettingsLayout ({ children }: Props) {
 					<div className="mt-4">
 						<NavigationStories />
 					</div>
-			</div>
+				</div>
 
-			<div className="w-full">
-				{ children }
+				<div className="w-full">
+					{ children }
+				</div>
 			</div>
-		</div>
+		</Default>
+
 	)
 }
 

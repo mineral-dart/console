@@ -1,42 +1,35 @@
-import {ReactNode} from "react";
-import {useLocation} from "react-router";
-import SideBar from "../components/side-bar";
-import {classNames} from "@console/utils";
+import {useQuery} from "react-query";
+import {useApiClient} from "@console/api-client";
+import {OrganizationsResponse} from "@console/interfaces";
+import {useAuth} from "../hooks/use-auth";
+import {ReactNode, useEffect} from "react";
+import {updateUserState} from "@console/redux";
+import {useDispatch} from "react-redux";
 
 interface Props {
   children: ReactNode
-
-  layout: {
-    label: string
-    noBackground?: boolean
-    location?: string[]
-    navigation: any[]
-  }
 }
 
-export default function Layout ({ children, layout }: Props) {
-  const { pathname } = useLocation()
+export default function Default ({ children }: Props) {
+  const dispatch = useDispatch()
+  const apiClient = useApiClient()
+  const { data: organizations } = useQuery('organizations', async () => {
+    const resp = await apiClient.get<OrganizationsResponse>('/organizations').build()
+    return resp.data
+  })
+
+  const { useMe } = useAuth()
+  const { data: user } = useMe()
+
+  useEffect(() => {
+    if (user) {
+      dispatch(updateUserState(user))
+    }
+  }, [user])
 
   return (
-    <div className="flex flex-col lg:flex-row lg:flex-shrink-0 min-h-screen dark:bg-[#151B2B] bg-[#E2E9F3]">
-      <SideBar />
-      <div className="flex flex-col w-full max-h-screen">
-        <div className={classNames(
-          'mx-auto w-full h-full flex',
-          pathname.split('/').includes('logs') ? '' : 'p-2'
-        )}>
-          { layout.noBackground
-            ? <div className="w-full">{ children }</div>
-            :
-            <div className="bg-white w-full mn-h-full rounded-md shadow-md overflow-hidden">
-              <div className="w-full">
-                { children }
-              </div>
-            </div>
-          }
-        </div>
-
-      </div>
+    <div>
+      { children }
     </div>
   )
 }

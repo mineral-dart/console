@@ -1,9 +1,10 @@
 import {configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import {navigationReducer} from "@console/redux";
+import {authenticationReducer, navigationReducer} from "@console/redux";
 
 const store = configureStore({
   reducer: {
-    navigation: navigationReducer
+    navigation: navigationReducer,
+    auth: authenticationReducer
   },
   middleware: [...getDefaultMiddleware()]
 })

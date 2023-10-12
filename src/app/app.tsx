@@ -1,18 +1,20 @@
-import {QueryClient, QueryClientProvider} from "react-query"
-import {ReactQueryDevtools} from "react-query/devtools";
-import Router from "./router";
-import {useDispatch} from "react-redux";
-import {useEffect} from "react";
-import {updateNavigationState} from "@console/redux";
-import {INavigation, INavigationSettings} from "@console/interfaces";
-import {ClockIcon, Cog6ToothIcon, CreditCardIcon, HomeIcon, UsersIcon} from "@heroicons/react/20/solid";
-import {useLocation} from "react-router";
-
-const queryClient = new QueryClient()
+import { useQuery } from "react-query"
+import Router from "./router"
+import { useDispatch } from "react-redux"
+import { useEffect } from "react"
+import { updateNavigationState, updateUserState } from "@console/redux"
+import { INavigation, INavigationSettings, OrganizationsResponse } from "@console/interfaces"
+import { ClockIcon, Cog6ToothIcon, CreditCardIcon, HomeIcon, UsersIcon } from "@heroicons/react/20/solid"
+import { useLocation } from "react-router"
+import { useAuth } from "./hooks/use-auth"
+import { useApiClient } from "@console/api-client"
 
 export default function App() {
   const dispatch = useDispatch()
+  const apiClient = useApiClient()
   const { pathname } = useLocation()
+
+
 
   const navigation: INavigation[] = [
     { label: 'Accueil', href: '/', icon: HomeIcon as never},
@@ -38,6 +40,7 @@ export default function App() {
     }))
   }, [])
 
+
   useEffect(() => {
     if (pathname.split('/').includes('logs')) {
       document.documentElement.classList.add('dark')
@@ -47,11 +50,8 @@ export default function App() {
   })
   
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <div>
-        <Router />
-      </div>
-    </QueryClientProvider>
+    <div>
+      <Router />
+    </div>
   )
 }

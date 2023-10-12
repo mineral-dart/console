@@ -7,9 +7,12 @@ import {classNames, ReactElement} from "@console/utils";
 import {Icon} from '@console/ui'
 import {IconEnum} from "@console/enums";
 import { Cog6ToothIcon, Cog8ToothIcon } from "@heroicons/react/20/solid";
+import MenuAccount from "./menu-account";
 
 export default function SideBar () {
   const dispatch = useDispatch()
+
+  const auth = useSelector((root: RootState) => root.auth)
   const [open, setOpen] = useState<boolean>(false)
   const navigationState = useSelector((state: RootState) => state.navigation)
 
@@ -30,7 +33,7 @@ export default function SideBar () {
             <div className="absolute inset-y-0 left-0 md:static md:flex-shrink-0">
               {/** LOGO **/}
               <div className="flex h-16 w-16 items-center justify-center focus:outline-none">
-                <Icon name={IconEnum.CONSOLE} className="w-9 p-3" />
+                <Icon name={IconEnum.CONSOLE} className="w-9 p-4" />
               </div>
             </div>
           </Link>
@@ -49,12 +52,14 @@ export default function SideBar () {
                 ))}
                 
               </div>
-              <div className=" flex border-t pt-4">
-                <span className="inline-block h-10 w-10 overflow-hidden rounded-full mx-auto bg-gray-100">
-                  <svg className="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                </span>
+              <div className=" flex border-t pt-4 mx-auto">
+                { auth.user &&
+                    <MenuAccount />
+                }
+
+
+
+
               </div>
             </div>
           </div>

@@ -10,3 +10,5 @@ export * from './lib/components/tag/tag'
 export * from './lib/components/tag-event/tag-event'
 
 export * from './lib/components/pagination/pagination'
+
+export * from './lib/components/avatar'

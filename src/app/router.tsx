@@ -4,6 +4,7 @@ import Home from "./pages";
 import SettingHome from "./pages/settings";
 import SettingsMembers from "./pages/settings/team/members";
 import AuditLogs from "./pages/audit-logs";
+import LoginPage from "./pages/login";
 
 export default function Router () {
   const routes: IRouter[] = [
@@ -12,6 +13,8 @@ export default function Router () {
 
     { uid: 'settings/general', href: '/settings/general', component: <SettingHome />},
     { uid: 'settings/members', href: '/settings/members', component: <SettingsMembers />},
+
+    { uid: 'login', href: '/login', component: <LoginPage />},
   ]
 
   return (

@@ -1,5 +1,5 @@
 import { Icon, Pagination, Table, TableFilterProps, TableHeadProps } from "@console/ui";
-import Layout from "../layouts/default";
+import Layout from "../layouts/standard";
 import { useState } from "react";
 import { IconAwesomeEnum } from "@console/enums";
 import { SignalSlashIcon } from "@heroicons/react/20/solid";

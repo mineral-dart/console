@@ -22,7 +22,7 @@ export function TableRowFilter ({ children, data, filter }: PropsWithChildren<Ta
 			let nestedData = data
 			
 			for (const key of nestedKeys) {
-				if (nestedData && Object.prototype.hasOwnProperty.call(nestedData, key)) {
+				if (nestedData && key in nestedData) {
 					nestedData = nestedData[key]
 				} else {
 					return false

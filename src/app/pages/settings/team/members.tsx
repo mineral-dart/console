@@ -1,5 +1,5 @@
 import { Cog6ToothIcon, UserIcon, UsersIcon } from "@heroicons/react/20/solid";
-import Layout from "../../../layouts/default";
+import Layout from "../../../layouts/standard";
 import { INavigation, INavigationSettings } from "@console/interfaces";
 import { NavLink } from "react-router-dom";
 import { ReactElement, classNames } from "@console/utils";

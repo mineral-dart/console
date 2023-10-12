@@ -57,7 +57,10 @@ export const Tooltip = forwardRef<ElementRef<typeof TooltipPrimitive.Content>, T
       </TooltipPrimitive.Trigger>
       <TooltipPrimitive.Portal container={container}>
         <TooltipPrimitive.Content
-          className={tooltipContentVariants({ color })}
+          className={classNames(
+            tooltipContentVariants({ color }),
+            'z-[100]'
+          )}
           side={side}
           sideOffset={6}
           align={align}
