@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Ui from './ui';
+import ApiClient from './api-client';
 
-describe('Ui', () => {
+describe('ApiClient', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Ui />);
+    const { baseElement } = render(<ApiClient />);
     expect(baseElement).toBeTruthy();
   });
 });
