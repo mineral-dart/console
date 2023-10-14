@@ -1,17 +1,28 @@
 import { useApiClient } from "@console/api-client";
-import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 import { IOrganization, OrganizationState } from '@console/interfaces'
 import { OrganizationEntity } from "libs/interfaces/src/lib/domains/organization.entity";
-
-const apiClient = useApiClient()
+import { type RootState } from "@console/state/store"
+import axios from "axios";
+import { apiClient } from '@console/api-client'
 
 export const organizationAdapter = createEntityAdapter<OrganizationEntity>()
 
-export const fetchOrganization = createAsyncThunk('organization/fetch', async () => {
-  const response = await apiClient.get('/organizations').build()
-
-  return response.data as IOrganization[]
+export const fetchOrganization = createAsyncThunk('organization/fetch', async () => {  
+  const response = await apiClient.get<{ meta: any, data: IOrganization[]}>('/organizations').build()
+  
+  return response.data.data as IOrganization[]
 })
+
+export const fetchOrganizationById = createAsyncThunk(
+  'organization/fetch-by-id',
+  async (payload: { organizationId: string }) => {
+    const response = await apiClient.get<IOrganization>(`/organizations/${payload.organizationId}`).build()
+
+    return response.data as IOrganization
+  }
+)
+
 
 export const initialOrganizationState: OrganizationState = organizationAdapter.getInitialState({
   loadingStatus: 'not loaded',
@@ -31,8 +42,8 @@ const organizationSlice = createSlice({
       .addCase(fetchOrganization.pending, (state) => {
         state.loadingStatus = 'loading'
       })
-      .addCase(fetchOrganization.fulfilled, (state, { payload }) => {
-        organizationAdapter.upsertMany(state, payload)
+      .addCase(fetchOrganization.fulfilled, (state: OrganizationState, action: PayloadAction<OrganizationEntity[]>) => {        
+        organizationAdapter.upsertMany(state, action.payload)
         state.loadingStatus = 'loaded'
       })
       .addCase(fetchOrganization.rejected, (state: OrganizationState, action) => {
@@ -41,6 +52,13 @@ const organizationSlice = createSlice({
       })
 
       // fetch organization by id
+      .addCase(
+        fetchOrganizationById.fulfilled,
+        (state: OrganizationState, action: PayloadAction<OrganizationEntity>) => {
+          organizationAdapter.upsertOne(state, action.payload)
+          state.loadingStatus = 'loaded'
+        }
+      )
 
       // post organization
 
@@ -48,9 +66,16 @@ const organizationSlice = createSlice({
 
       // update organization
 
-      
+
 
   }
 })
 
 export const organization = organizationSlice.reducer
+
+const { selectAll } = organizationAdapter.getSelectors()
+
+export const getOrganizationState = (rootState: RootState): OrganizationState =>
+  rootState.organization['organizations']
+
+export const selectAllOrganization = createSelector(getOrganizationState, selectAll)
