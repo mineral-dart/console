@@ -1,5 +1,6 @@
 import { type PreloadedState, combineReducers, configureStore } from '@reduxjs/toolkit'
 import {
+  initialOrganizationState,
   organization
 } from '@console/domains/organization'
 
@@ -8,7 +9,6 @@ export const organizationReducer = combineReducers({
 })
 
 export const rootReducer = combineReducers({
-
   organization: organizationReducer
 })
 
@@ -29,6 +29,6 @@ export type AppDispatch = AppStore['dispatch']
 
 export const initialRootState = (): RootState => ({
   organization: {
-    organizations: []
+    organizations: initialOrganizationState
   }
 })
