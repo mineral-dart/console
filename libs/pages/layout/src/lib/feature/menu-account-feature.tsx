@@ -6,10 +6,10 @@ import { RootState } from "@console/redux";
 
 export function MenuAccountFeature () {
   const { organizationId = '' } = useParams()
-  const auth = useSelector((state: RootState) => state.auth)
+  //const auth = useSelector((state: RootState) => state.auth)
 
 
-  console.log(auth);
+  //console.log(auth);
   
 
   const organizations: IOrganization[] = []
@@ -19,9 +19,9 @@ export function MenuAccountFeature () {
       organizations={organizations}
       currentOrganization={organizations.find((org) => org.id === organizationId)}
       user={{
-        username: auth.user?.username || '',
-        email: auth.user?.email || '',
-        picture: auth.user?.avatar_url || '',
+        username: 'Nathael',
+        email: 'pro.nathaelbonnal@gmail.com ',
+        picture: '',
       }}
     />
   )
