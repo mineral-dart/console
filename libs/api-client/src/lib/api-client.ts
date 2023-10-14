@@ -69,3 +69,4 @@ class PutRequest extends Request {
     })
   }
 }
+export const apiClient = new ApiClient('http://localhost:4444')
