@@ -34,9 +34,7 @@ export function LayoutPage ({ defaultOrganizationId, topBar = true, organzation,
             'relative flex flex-col pt-2 px-2 dark:pt-0 dark:px-0'
           )}>
             { children }
-
           </div>
-
         </div>
       </div>
 
