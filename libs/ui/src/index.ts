@@ -12,3 +12,5 @@ export * from './lib/components/tag-event/tag-event'
 export * from './lib/components/pagination/pagination'
 
 export * from './lib/components/avatar'
+
+export * from './lib/components/navigation-left/navigation-left'
