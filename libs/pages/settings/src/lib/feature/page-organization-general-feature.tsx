@@ -3,26 +3,29 @@ import { useParams } from "react-router-dom"
 import { RootState } from "@console/redux"
 import { useEffect, useState } from "react"
 import { PageOrganizationGeneral } from "../ui/page-organization-general"
-
+import { type AppDispatch } from '@console/state/store'
+import { selectAllOrganization } from "@console/domains/organization"
 
 export function PageOrganizationGeneralFeature() {
   const { organizationId = '' } = useParams()
-
-  const test = useSelector((state: RootState) => state.organizations)
-  console.log(test);
   
-
-  const organization = useSelector((state: RootState) => state.organizations.organizations[0])
+  //const organization = useSelector((state: RootState) => state.organizations.organizations[0])
 
   const [loading, setLoading] = useState(false)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
 
+  const organization = useSelector(selectAllOrganization)
 
   function onSubmit () {}
 
   useEffect(() => {
+    console.log(organization);
+    
+  }, [organization])
 
-  }, [organization?.name])
+  // useEffect(() => {
+
+  // }, [organization?.name])
 
 
   return (
@@ -30,7 +33,7 @@ export function PageOrganizationGeneralFeature() {
       <PageOrganizationGeneral 
         onSubmit={onSubmit}
         loading={loading}
-        created_at={organization?.created_at || ''}
+        created_at={''}
       />
     </div>
   )

@@ -28,7 +28,7 @@
       "@console/routes": ["libs/routes/src/index.ts"],
       "@console/ui": ["libs/ui/src/index.ts"],
       "@console/utils": ["libs/utils/src/index.ts"],
-      "state-store": ["libs/state/store/src/index.ts"]
+      "@console/state/store": ["libs/state/store/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

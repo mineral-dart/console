@@ -11,7 +11,6 @@ import { useApiClient } from "@console/api-client"
 
 export default function App() {
   const dispatch = useDispatch()
-  const apiClient = useApiClient()
   const { pathname } = useLocation()
 
 

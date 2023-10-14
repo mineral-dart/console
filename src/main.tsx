@@ -1,14 +1,15 @@
-import { StrictMode } from 'react';
+import { Fragment, StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
 import App from './app/app';
 import { Provider as TooltipProvider } from '@radix-ui/react-tooltip'
 import {Provider} from "react-redux";
-import store from "./app/store";
 import {BrowserRouter} from "react-router-dom";
 import {QueryClient, QueryClientProvider} from "react-query";
 import {ReactQueryDevtools} from "react-query/devtools";
 import {ApiClient, ApiClientProvider} from '@console/api-client'
+import { setupStore } from '@console/state/store'
+// import store from './app/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -29,24 +30,33 @@ const queryClient = new QueryClient({
 })
 
 const apiClient = new ApiClient('http://localhost:4444')
+const store = setupStore()
 
 root.render(
-  <StrictMode>
+  <div>
+    <StrictMode>
+    <ApiClientProvider apiClient={apiClient}>
     <Provider store={store}>
-      <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
-          <ReactQueryDevtools initialIsOpen={false} position={'bottom-right'} />
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} position={'bottom-right'} />
+        
 
-          <ApiClientProvider apiClient={apiClient}>
+          
+            <BrowserRouter>
             <TooltipProvider>
-              <App />
+              <Fragment>
+                <App />
+              </Fragment>
             </TooltipProvider>
-          </ApiClientProvider>
+            </BrowserRouter>
+            
+          
 
-
+       
         </QueryClientProvider>
-
-      </BrowserRouter>
-    </Provider>
-  </StrictMode>
+       </Provider>
+       </ApiClientProvider>
+    </StrictMode>
+  </div>
+  
 );

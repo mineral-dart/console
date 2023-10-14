@@ -45,7 +45,7 @@ export default function Router () {
     <Routes>
 
 
-      <Route path={"/"}>
+      {/* <Route path={"/"}>
         { routes.map((route) => (
           <Route
             key={route.uid}
@@ -53,7 +53,9 @@ export default function Router () {
             element={route.component}
           />
         ))}
-      </Route>
+      </Route> */}
+
+      <Route path="/login"  element={<LoginPage />} />
 
       { ROUTER.map((route) =>
         route.layout ?
