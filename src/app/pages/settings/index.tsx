@@ -1,15 +1,25 @@
 import { Cog6ToothIcon, UserIcon, UsersIcon } from "@heroicons/react/20/solid";
 import Layout from "../../layouts/standard";
 import { INavigation, INavigationSettings } from "@console/interfaces";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import { ReactElement, classNames } from "@console/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronUpIcon } from '@heroicons/react/20/solid'
 import { Disclosure } from '@headlessui/react'
 import SettingsLayout from "../../layouts/settings";
 
 
 export default function SettingHome () {
+
+	const location = useLocation()
+  const { organizationId = '' } = useParams()
+  
+  
+
+  useEffect(() => {
+    console.log(location);
+    console.log(organizationId);
+  }, [location, organizationId])
 
 	
   return (

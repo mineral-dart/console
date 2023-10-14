@@ -1,10 +1,11 @@
 import {configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import {authenticationReducer, navigationReducer} from "@console/redux";
+import {authenticationReducer, navigationReducer, organizationsReducer} from "@console/redux";
 
 const store = configureStore({
   reducer: {
     navigation: navigationReducer,
-    auth: authenticationReducer
+    auth: authenticationReducer,
+    organizations: organizationsReducer
   },
   middleware: [...getDefaultMiddleware()]
 })
