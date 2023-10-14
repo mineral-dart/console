@@ -50,6 +50,54 @@ module.exports = {
         code: ['Hack', 'sans-serif'],
         icons: ['FontAwesome'],
       },
+      fontSize: {
+        '3xs': [
+          '0.5rem',
+          {
+            lineHeight: '1rem',
+          },
+        ],
+        '2xs': [
+          '0.625rem',
+          {
+            lineHeight: '1rem',
+          },
+        ],
+        xs: [
+          '0.75rem',
+          {
+            lineHeight: '1rem',
+            letterSpacing: '0.002em',
+          },
+        ],
+        ssm: [
+          '0.8125rem',
+          {
+            lineHeight: '1.25rem',
+            letterSpacing: '0.0025em',
+          },
+        ],
+        sm: [
+          '0.875rem',
+          {
+            lineHeight: '1.25rem',
+            letterSpacing: '0.0025em',
+          },
+        ],
+        base: [
+          '1rem',
+          {
+            lineHeight: '1.5rem',
+            letterSpacing: '0.005em',
+          },
+        ],
+        lg: [
+          '1.25rem',
+          {
+            lineHeight: '1.75rem',
+          },
+        ],
+      },
       colors: {
         brand: colorsIndigo,
         indigo: colorsIndigo,
