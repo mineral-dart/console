@@ -7,6 +7,7 @@ import { useAuth } from "@console/auth"
 import { updateUserState } from "@console/redux"
 import { fetchOrganization, selectAllOrganization } from '@console/domains/organization'
 import { type AppDispatch, type RootState } from '@console/state/store'
+import {fetchProjects} from "@console/domains/project";
 
 export interface LayoutProps {
   topBar?: boolean
@@ -46,8 +47,12 @@ export function Layout ({ topBar, children }: PropsWithChildren<LayoutProps>) {
   }, [projectId, organizationId])
 
   useEffect(() => {
-    console.log(organizations);
-  }, [organizations])
+    if (organizationId) {
+
+      dispatch(fetchProjects({ organizationId }))
+
+    }
+  }, [dispatch, organizationId])
 
   return (
     <LayoutPage 
