@@ -45,6 +45,7 @@ export function NavigationLeft ({ title, links, link, className = '' }: NAvigati
           <Icon name={link.icon} className="inline-block w-3" />
         </div>
       )}
+      {link.title}
     </>
   )
 
@@ -64,7 +65,7 @@ export function NavigationLeft ({ title, links, link, className = '' }: NAvigati
 
       { links.map((link, index) =>
         !link.onClick && !link.subLinks && link.url ? (
-          <Link data-testid="link" key={index} to={link.url}>
+          <Link data-testid="link" key={index} to={link.url} className={linkClassName(link.url, pathname)}>
             { linkContent(link) }
           </Link>
         ) : !link.onClick && link.subLinks ? (

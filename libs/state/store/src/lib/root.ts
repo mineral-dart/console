@@ -3,13 +3,19 @@ import {
   initialOrganizationState,
   organization
 } from '@console/domains/organization'
+import {initialProjectsState, projects} from "@console/domains/project";
 
 export const organizationReducer = combineReducers({
   organizations: organization
 })
 
+export const projectReducer = combineReducers({
+  projects: projects
+})
+
 export const rootReducer = combineReducers({
-  organization: organizationReducer
+  organization: organizationReducer,
+  project: projectReducer
 })
 
 export function setupStore(preloadedState?: PreloadedState<RootState>) {
@@ -30,5 +36,8 @@ export type AppDispatch = AppStore['dispatch']
 export const initialRootState = (): RootState => ({
   organization: {
     organizations: initialOrganizationState
+  },
+  project: {
+    projects: initialProjectsState
   }
 })
