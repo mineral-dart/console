@@ -1,19 +1,21 @@
-import { useQuery } from "react-query"
 import Router from "./router"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react"
-import { updateNavigationState, updateUserState } from "@console/redux"
-import { INavigation, INavigationSettings, OrganizationsResponse } from "@console/interfaces"
+import { updateNavigationState } from "@console/redux"
+import { INavigation, INavigationSettings } from "@console/interfaces"
 import { ClockIcon, Cog6ToothIcon, CreditCardIcon, HomeIcon, UsersIcon } from "@heroicons/react/20/solid"
 import { useLocation } from "react-router"
-import { useAuth } from "./hooks/use-auth"
-import { useApiClient } from "@console/api-client"
+import {AppDispatch} from "@console/state/store"
+import {fetchUser} from "@console/domains/users"
 
 export default function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
   const { pathname } = useLocation()
 
 
+  useEffect(() => {
+    dispatch(fetchUser())
+  }, []);
 
   const navigation: INavigation[] = [
     { label: 'Accueil', href: '/', icon: HomeIcon as never},
