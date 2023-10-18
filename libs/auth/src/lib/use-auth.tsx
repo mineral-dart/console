@@ -1,10 +1,9 @@
 import {useQuery} from 'react-query'
-import {useApiClient} from '@console/api-client'
+import { apiClient } from '@console/api-client'
 import {IUser} from '@console/interfaces'
+import { useCallback } from 'react'
 
 export function useAuth () {
-  const apiClient = useApiClient()
-
   function useMe () {
     return useQuery('me', async () => {
       const response = await apiClient.get<IUser>('/authentication/me').build()
@@ -12,6 +11,10 @@ export function useAuth () {
       return response.data
     })
   }
+
+  // const checkIsAuthenticated = useCallback(() => {
+  //   return isAuthenticated
+  // }, [isAuthenticated])()
 
   return { useMe }
 }

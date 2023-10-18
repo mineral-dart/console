@@ -4,6 +4,7 @@ import {
   organization
 } from '@console/domains/organization'
 import {initialProjectsState, projects} from "@console/domains/project";
+import {userReducer} from "@console/domains/users";
 
 export const organizationReducer = combineReducers({
   organizations: organization
@@ -13,9 +14,11 @@ export const projectReducer = combineReducers({
   projects: projects
 })
 
+
 export const rootReducer = combineReducers({
   organization: organizationReducer,
-  project: projectReducer
+  project: projectReducer,
+  user: userReducer
 })
 
 export function setupStore(preloadedState?: PreloadedState<RootState>) {

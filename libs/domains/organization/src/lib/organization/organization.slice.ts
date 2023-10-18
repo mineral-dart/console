@@ -3,7 +3,6 @@ import { PayloadAction, createAsyncThunk, createEntityAdapter, createSelector, c
 import { IOrganization, OrganizationState } from '@console/interfaces'
 import { OrganizationEntity } from "libs/interfaces/src/lib/domains/organization.entity";
 import { type RootState } from "@console/state/store"
-import axios from "axios";
 import { apiClient } from '@console/api-client'
 
 export const organizationAdapter = createEntityAdapter<OrganizationEntity>()
