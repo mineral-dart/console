@@ -9,6 +9,7 @@ import {QueryClient, QueryClientProvider} from "react-query";
 import {ReactQueryDevtools} from "react-query/devtools";
 import {ApiClient, ApiClientProvider} from '@console/api-client'
 import { setupStore } from '@console/state/store'
+import {ModalProvider} from "@console/ui";
 // import store from './app/store';
 
 const root = ReactDOM.createRoot(
@@ -45,7 +46,10 @@ root.render(
             <BrowserRouter>
             <TooltipProvider>
               <Fragment>
-                <App />
+                <ModalProvider>
+                  <App />
+                </ModalProvider>
+
               </Fragment>
             </TooltipProvider>
             </BrowserRouter>
