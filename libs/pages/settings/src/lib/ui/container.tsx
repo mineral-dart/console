@@ -1,7 +1,6 @@
 import { ReactNode } from "react"
 import { useParams } from "react-router-dom"
-import { NavigationLeft, NavigationLeftLinkProps } from "@console/ui"
-
+import {Modal, NavigationLeft, NavigationLeftLinkProps, useModal} from "@console/ui"
 export interface ContainerProps {
   children: ReactNode
   organizationLinks: NavigationLeftLinkProps[]
@@ -10,6 +9,7 @@ export interface ContainerProps {
 
 export function Container ({ children, organizationLinks, projectLinks }: ContainerProps) {
   const { organizationId = '' } = useParams()
+  const { openModal, closeModal } = useModal()
 
   return (
     <div className="bg-white flex rounded-t">
@@ -24,6 +24,10 @@ export function Container ({ children, organizationLinks, projectLinks }: Contai
               title: 'New',
               onClick: () => {
                 console.log("OPEN MODAL");
+                openModal({
+                  content: <CreateProjectModalFeature onClose={closeModal} organizationId={organizationId} />
+                  //content: <div>Bonjour</div>
+                })
                 // TODO OPEN MODAL
               }
             }}
@@ -34,4 +38,14 @@ export function Container ({ children, organizationLinks, projectLinks }: Contai
       <div>{ children }</div>
     </div>
   )
+}
+
+
+function CreateProjectModalFeature ({ onClose, organizationId }) {
+  return (
+    <div>
+      Bonjour
+    </div>
+  )
+
 }
