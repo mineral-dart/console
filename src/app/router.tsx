@@ -1,7 +1,7 @@
 import {Navigate, Route, Routes} from "react-router"
 import { ReactNode } from "react"
 import { PageSettings } from '@console/pages/settings'
-import { SETTINGS_URL } from '@console/routes'
+import {ENVIRONMENTS_URL, SETTINGS_URL} from '@console/routes'
 import { Layout } from '@console/pages/layout'
 import { PageLogin } from '@console/pages/login'
 
@@ -22,6 +22,10 @@ export const ROUTER: RouterProps[] = [
     layout: true,
     topBar: false,
   },
+  // {
+  //   path: `${ENVIRONMENTS_URL()}/*`,
+  //   component: <
+  // }
 ]
 export default function Router () {
   return (

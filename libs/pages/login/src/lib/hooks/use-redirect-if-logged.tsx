@@ -6,7 +6,14 @@ import {IOrganization, ProjectEntity} from "@console/interfaces";
 import {fetchOrganization} from "@console/domains/organization";
 import {fetchProjects} from "@console/domains/project";
 import { getUserState } from '@console/domains/users'
-import {ORGANIZATION_URL, OVERVIEW_URL, SETTINGS_GENERAL_URL, SETTINGS_URL} from "@console/routes";
+import {
+  ENVIRONMENTS_GENERAL_URL,
+  ENVIRONMENTS_URL,
+  ORGANIZATION_URL,
+  OVERVIEW_URL,
+  SETTINGS_GENERAL_URL,
+  SETTINGS_URL
+} from "@console/routes";
 import { getCurrentOrganizationIdFromStorage, getCurrentProjectIdFromStorage, getRedirectLoginUriFromStorage } from "./utils";
 
 export function useRedirectIfLogged () {
@@ -29,7 +36,7 @@ export function useRedirectIfLogged () {
        const organizationId = organizations[0].id
        const projects: ProjectEntity[] = await dispatch(fetchProjects({ organizationId })).unwrap()
 
-       if (projects.length > 0) navigate(OVERVIEW_URL(organizationId, projects[0].id))
+       if (projects.length > 0) navigate(ENVIRONMENTS_URL(organizationId, projects[0].id) + ENVIRONMENTS_GENERAL_URL)
        else navigate(SETTINGS_URL(organizationId) + SETTINGS_GENERAL_URL)
      } else {
        // Cas pas d'organization
