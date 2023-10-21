@@ -14,3 +14,7 @@ export * from './lib/components/pagination/pagination'
 export * from './lib/components/avatar'
 
 export * from './lib/components/navigation-left/navigation-left'
+
+export * from './lib/components/modal/modal'
+export * from './lib/components/modal/modal-root'
+export * from './lib/components/modal/use-modal'
