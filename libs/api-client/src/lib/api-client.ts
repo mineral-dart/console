@@ -11,6 +11,10 @@ export class ApiClient {
   public get<T>(url: string): GetRequest<T> {
     return new GetRequest<T>(this.baseURL + url)
   }
+
+  public post(url: string): PostRequest {
+    return new PostRequest(this.baseURL + url)
+  }
 }
 
 class GetRequest<T> extends Request {
