@@ -1,6 +1,8 @@
 import { ReactNode } from "react"
 import { useParams } from "react-router-dom"
 import {Modal, NavigationLeft, NavigationLeftLinkProps, useModal} from "@console/ui"
+
+import { CreateProjectModalFeature } from '@console/shared'
 export interface ContainerProps {
   children: ReactNode
   organizationLinks: NavigationLeftLinkProps[]
@@ -38,14 +40,4 @@ export function Container ({ children, organizationLinks, projectLinks }: Contai
       <div>{ children }</div>
     </div>
   )
-}
-
-
-function CreateProjectModalFeature ({ onClose, organizationId }) {
-  return (
-    <div>
-      Bonjour
-    </div>
-  )
-
 }
