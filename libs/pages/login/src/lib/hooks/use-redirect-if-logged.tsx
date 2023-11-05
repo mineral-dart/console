@@ -57,7 +57,8 @@ export function useRedirectIfLogged () {
       }
 
       if (currentOrganization && currentProject) {
-        navigate(OVERVIEW_URL(currentOrganization, currentProject))
+        navigate(ENVIRONMENTS_URL(currentOrganization, currentProject) + ENVIRONMENTS_GENERAL_URL)
+        //navigate(OVERVIEW_URL(currentOrganization, currentProject))
         return
       }
 
