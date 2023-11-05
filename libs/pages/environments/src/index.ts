@@ -1,1 +1,1 @@
-export * from './lib/pages-environments';
+export * from './lib/page-environments';
