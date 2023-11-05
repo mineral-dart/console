@@ -4,7 +4,7 @@ import { PageSettings } from '@console/pages/settings'
 import {ENVIRONMENTS_URL, SETTINGS_URL} from '@console/routes'
 import { Layout } from '@console/pages/layout'
 import { PageLogin } from '@console/pages/login'
-
+import { PageEnvironments } from '@console/pages/environments'
 interface RouterProps {
   path: string
   component: ReactNode
@@ -22,10 +22,13 @@ export const ROUTER: RouterProps[] = [
     layout: true,
     topBar: false,
   },
-  // {
-  //   path: `${ENVIRONMENTS_URL()}/*`,
-  //   component: <
-  // }
+  {
+    path: `${ENVIRONMENTS_URL()}/*`,
+    component: <PageEnvironments />,
+    protected: true,
+    layout: true,
+    topBar: true
+  }
 ]
 export default function Router () {
   return (
