@@ -13,6 +13,26 @@ export const fetchProjects = createAsyncThunk<ProjectEntity[], { organizationId:
   return response.data.data as ProjectEntity[]
 })
 
+export const postProject = createAsyncThunk<any, { organizationId: string }>(
+  'project/post',
+  async (data, { rejectWithValue }) => {
+    const { organizationId, ...fields} = data
+    
+    console.log(organizationId, fields);
+    
+    try {
+      const result = await apiClient.post('/organizations/projects')
+        .payload({
+          ...fields, organizationId
+        }).build()
+
+      return result.data
+    } catch (e) {
+      return rejectWithValue(e)
+    }
+  }
+)
+
 export const initialProjectsState: ProjectsState = projectsAdapter.getInitialState({
   loadingStatus: 'not loaded',
   error: null,
