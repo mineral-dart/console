@@ -3,7 +3,7 @@ export interface Environment {
   name: string
   project?: any
   last_updated_by?: string
-  mode?: string
+  mode: string
   created_at: string
   updated_at: string
 }
