@@ -1,4 +1,4 @@
-import { ReactElement } from "react"
+import { ReactElement, ReactNode } from "react"
 
 export * from './sub-router/application.router'
 export * from './sub-router/database.router'
@@ -26,6 +26,6 @@ export const OVERVIEW_URL = (organizationId = ':organizationId', projectId = ':p
 
 
 export interface Route {
-  component: ReactElement
+  component: ReactNode
   path: string
 }
