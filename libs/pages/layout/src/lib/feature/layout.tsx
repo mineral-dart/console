@@ -50,6 +50,10 @@ export function Layout ({ topBar, children }: PropsWithChildren<LayoutProps>) {
     if (organizationId) {
 
       dispatch(fetchProjects({ organizationId }))
+      .unwrap()
+      .then((data) => {
+        console.log(data);
+      })
 
     }
   }, [dispatch, organizationId])
