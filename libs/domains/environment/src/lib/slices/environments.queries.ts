@@ -11,8 +11,9 @@ export const useFetchEnvironments = (
   return useQuery(
     ['project', projectId, 'environments'],
     async () => {
-      const response = await apiClient.get(``).build()
-      return response.data
+      const response = await apiClient.get(`/environments/${projectId}`).build()
+      
+      return (response.data as { meta: any, data: Environment[]}).data
     }, 
     {
       onSuccess: () => {
