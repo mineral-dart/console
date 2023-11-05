@@ -29,3 +29,7 @@ export * from './lib/components/modals/modal-crud/modal-crud'
 export * from './lib/components/headers/header'
 export * from './lib/components/tabs/tabs'
 export * from './lib/components/empty-state'
+
+export * from './lib/components/skeleton/skeleton'
+
+export * from './lib/components/tag-mode/tag-mode'
