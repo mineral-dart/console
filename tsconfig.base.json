@@ -17,6 +17,7 @@
     "paths": {
       "@console/api-client": ["libs/api-client/src/index.ts"],
       "@console/auth": ["libs/auth/src/index.ts"],
+      "@console/domains/environment": ["libs/domains/environment/src/index.ts"],
       "@console/domains/organization": [
         "libs/domains/organization/src/index.ts"
       ],
@@ -34,7 +35,7 @@
       "@console/state/store": ["libs/state/store/src/index.ts"],
       "@console/ui": ["libs/ui/src/index.ts"],
       "@console/utils": ["libs/utils/src/index.ts"],
-      "@console/domains/environment": ["libs/domains/environment/src/index.ts"]
+      "@console/domains/environments": ["libs/domains/environments/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
