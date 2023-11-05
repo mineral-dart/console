@@ -56,7 +56,7 @@ export function Icon (props: IconProps) {
     case IconAwesomeEnum.EYE:
       return <EyeIcon {...formattedProps} />
     case IconAwesomeEnum.WHEEL:
-      return <Cog6ToothIcon {...formattedProps} />
+      return <Cog6ToothIcon {...formattedProps} className="items-center justify-center flex" />
     case IconAwesomeEnum.WALLET:
       return <WalletIcon {...formattedProps} />
     case IconAwesomeEnum.USER_CROWN:

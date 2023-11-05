@@ -3,6 +3,7 @@ import { ReactNode } from "react"
 import { Icon } from "../icons/icon"
 import { Link } from "react-router-dom"
 import './button.scss'
+import { LoaderSpinner } from "../loader-spinner/loader-spinner"
 
 export enum ButtonSize {
 	XLARGE = 'xlarge',
@@ -69,7 +70,7 @@ export function Button (props: ButtonProps) {
 				{ iconRight && <Icon name={iconRight} className={iconRightClassName} />}
 			</>
 		) : (
-			<div>spin</div>
+			<LoaderSpinner theme="dark" />
 		)
 	}
 
